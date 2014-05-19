@@ -39,21 +39,21 @@
 
 /*!
 	\brief
-	The unique identifier for the sharing service.
+	The unique identifier for the sharing service. It should typically be the plugin bundle identifier.
  */
 @property (readonly, copy, nonatomic) NSString *identifier;
 extern NSString * const LLSpilloSharingServiceIdentifierKey;
 
 /*!
 	\brief
-	The display name for the sharing service.
+	The display name for the sharing service. This is the name that will be used in the sharing menu.
  */
 @property (readonly, copy, nonatomic) NSString *displayName;
 extern NSString * const LLSpilloSharingServiceDisplayNameKey;
 
 /*!
 	\brief
-	The display image for the sharing service. It has to be 16x16.
+	The display image for the sharing service. It has to be 16x16. This is the image that will be used in the sharing menu.
  */
 @property (readonly, copy, nonatomic) NSImage *displayImage;
 extern NSString * const LLSpilloSharingServiceDisplayImageKey;
@@ -68,6 +68,12 @@ extern NSString * const LLSpilloSharingServiceAuthenticatedKey;
 /*!
 	\brief
 	Create a sharing operation for given items.
+	
+	\param items
+	An array of `NSURL` instances that need to be shared. Note that it will very likely contain a single item.
+	
+	\return
+	An operation performing the sharing work. This operation has to conform to the `LLSpilloSharingServiceOperation` protocol.
  */
 - (NSOperation <LLSpilloSharingServiceOperation> *)createSharingOperationForItems:(NSArray *)items;
 
@@ -75,13 +81,20 @@ extern NSString * const LLSpilloSharingServiceAuthenticatedKey;
 
 /*!
 	\brief
-	Create a login view controller that will invoke the block on completion.
+	Create a login view controller that will invoke the block on completion. Note that the login credentials should be
+	persisted before invoking the completion block. Credentials should be saved somewhere safe such as in the keychain.
+	
+	\param completion
+	A completion block that should be invoked when the authentication has completed.
+	
+	\return
+	A view controller displaying login information.
  */
 - (NSViewController *)createLoginViewControllerWithCompletion:(void (^)(BOOL authenticated, NSError *authenticationError))completion;
 
 /*!
 	\brief
-	Logout the sharing service.
+	Logout the sharing service. This typically involves removing the credentials from the keychain.
  */
 - (void)logout;
 
