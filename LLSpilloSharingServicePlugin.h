@@ -10,6 +10,25 @@
 
 @protocol LLSpilloSharingServiceOperation <NSObject>
 
+/*!
+	\brief
+	The completion provider should be set by the operation before it is marked `isFinished`.
+	It is a simple block that returns a boolean wrapped in an `NSNumber` and takes an error by reference.
+	You should return nil should an error occur rather than wrap NO in an `NSNumber`.
+	
+	Setting the completion provider would typically happen as follows:
+	
+		NSError *writingError = nil;
+		BOOL written = [data writeToURL:fileURL options:NSDataWritingAtomic error:&writingError];
+	
+		[self setCompletionProvider:^ id (NSError **errorRef) {
+			if (errorRef != NULL) {
+				*errorRef = writingError;
+			}
+			return written ? @(written) : nil;
+		}];
+	
+ */
 @property (readonly, copy, atomic) NSNumber * (^completionProvider)(NSError **errorRef);
 
 @end
