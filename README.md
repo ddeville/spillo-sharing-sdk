@@ -30,6 +30,8 @@ Following are the steps that one need to go through in order to develop a plugin
 
 Plugins need to be installed in the application sandbox (there is a `PlugIns` directory under `~/Library/Application Support` in the sandbox). Since it can be tricky to navigate down there a menu item is available in Spillo’s help menu to quickly opening the `PlugIns` directory.
 
+After pasting the plugin in the PlugIns directory, you will have to relaunch Spillo for it to load the plugin.
+
 ### Troubleshooting
 
 While working on the plugin, it might be helpful setting a special user default that will report errors while loading the plugin.
