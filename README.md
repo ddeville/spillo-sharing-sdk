@@ -3,6 +3,8 @@ Spillo Sharing SDK
 
 Creating a plugin to share item with Spillo is very simple. The SDK is just a single header declaring a `LLSpilloSharingService` protocol that your plugin’s principal class needs to conform to.
 
+You can find more about Spillo by visiting the official [page](http://bananafishsoftware.com/products/spillo/).
+
 ### How to develop a plugin
 
 Following are the steps that one need to go through in order to develop a plugin:
