@@ -34,6 +34,10 @@ Plugins need to be installed in the application sandbox (there is a `PlugIns` di
 
 After pasting the plugin in the PlugIns directory, you will have to relaunch Spillo for it to load the plugin.
 
+### Example
+
+A very simple project is included as an example. It builds a sharing plugin to open an item in the default browser. It is exactly the same that ships in Spillo. This plugin doesn’t require authentication but it gives you a good idea of what a plugin looks like nonetheless.
+
 ### Troubleshooting
 
 While working on the plugin, it might be helpful setting a special user default that will report errors while loading the plugin.
