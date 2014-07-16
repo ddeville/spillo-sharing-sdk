@@ -12,11 +12,11 @@ Following are the steps that one need to go through in order to develop a plugin
 1. In Xcode, create a new project and select the `Bundle` template. Select `Cocoa` as the Framework to link to.
 2. In your newly created bundle target, navigate to the Build Settings. In there, change the Wrapper Extension setting (under the Packaging section) from `bundle` to `spillosharing`.
 3. In your project, create a new class. A subclass of `NSObject` will do.
-4. Going back to the target info, add a new enty to the Info plist `NSPrincipalClass`. Specify the name of the class you’ve just created.
+4. Going back to the target info, add a new entry to the Info plist `NSPrincipalClass`. Specify the name of the class you’ve just created.
 5. Drag the two files `LLSpilloSharingServicePlugin.h` and `LLSpilloSharingServicePlugin.m` to your project making sure that they are copied into your project.
 6. In your newly created class, `#import LLSpilloSharingServicePlugin.h`.
 7. Make your class conform to the `LLSpilloSharingService` protocol.
-8. Implement the required method in the protocol. `identifier` needs to be a unique identifier for your plugin, the bundle identifier will do. Display name is the name of your plugin as displayed in the share menu and the display image is the 16x16 icon.
+8. Implement the required methods in the protocol. `identifier` needs to be a unique identifier for your plugin, the bundle identifier will do. Display name is the name of your plugin as displayed in the share menu and the display image is the 16x16 icon.
 9. Implement the `createSharingOperationForItems:` method. This is the core of the plugin. You will be passed an array of `NSURL` instances (most likely containing a single item) and you will have to return an `NSOperation` that actually perform the sharing work. The returned `NSOperation` needs to conform to the `LLSpilloSharingServiceOperation` protocol which means it just needs to have a valid completion provider when going `isFinished`. See the comments in the header for more documentation.
 10. If your plugin requires authentication, makes sure to return an appropriate value for the `authenticated` property so that Spillo can correcly kick in authentication for your plugin when needed.
 11. Again, if you need to authenticate your plugin, you can return a view controller from the `createLoginViewControllerWithCompletion:` method. In this controller you should ask for credentials input from the user, persist them to the keychain and invoke the completion block when done authenticating. If you need to cancel simply invoke the completion block with a `NSUserCancelledError` error code from `NSCocoaErrorDomain`.
