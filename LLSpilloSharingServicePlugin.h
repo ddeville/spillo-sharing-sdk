@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Damien DeVille. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @protocol LLSpilloSharingServiceOperation <NSObject>
 
