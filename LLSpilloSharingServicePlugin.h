@@ -35,7 +35,7 @@
 
 @protocol LLSpilloSharingService <NSObject>
 
- @required
+@required
 
 /*!
 	\brief
@@ -77,7 +77,7 @@ extern NSString * const LLSpilloSharingServiceAuthenticatedKey;
  */
 - (NSOperation <LLSpilloSharingServiceOperation> *)createSharingOperationForItems:(NSArray *)items;
 
- @optional
+@optional
 
 /*!
 	\brief
