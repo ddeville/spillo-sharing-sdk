@@ -21,7 +21,7 @@
 		NSError *writingError = nil;
 		BOOL written = [data writeToURL:fileURL options:NSDataWritingAtomic error:&writingError];
 	
-		[self setCompletionProvider:^ id (NSError **errorRef) {
+		[self setCompletionProvider:^id(NSError **errorRef) {
 			if (errorRef != NULL) {
 				*errorRef = writingError;
 			}
@@ -29,7 +29,7 @@
 		}];
 	
  */
-@property (readonly, copy, atomic) NSNumber * (^completionProvider)(NSError **errorRef);
+@property (readonly, copy, atomic) NSNumber *(^completionProvider)(NSError **errorRef);
 
 @end
 
